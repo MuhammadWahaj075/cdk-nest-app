@@ -3,6 +3,7 @@ import fs from 'fs'
 const html = fs.readFileSync('static/index.html', 'utf-8')
 
 export const handler = async (event, context) => {
+  console.log("🚀 ~ handler ~ event:", event)
   const response = {
     statusCode: 200,
     headers: {

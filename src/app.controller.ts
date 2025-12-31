@@ -11,8 +11,8 @@ export class AppController {
   @Get('/')
   @Header('Content-Type', 'text/html; charset=UTF-8')
   async index() {
-    const p1 = join(process.cwd(), 'static', 'index.html'); // Lambda bundle
-    const p2 = join(process.cwd(), 'src', 'static', 'index.html'); // local dev
+    const p1 = join(process.cwd(), 'static', 'index.html');
+    const p2 = join(process.cwd(), 'src', 'static', 'index.html');
     const templatePath = existsSync(p1) ? p1 : p2;
 
     const template = readFileSync(templatePath, 'utf-8');

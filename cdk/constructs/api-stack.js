@@ -12,7 +12,6 @@ class ApiStack extends Stack {
       deployOptions: { stageName: props.stageName },
     });
 
-    // Nest Lambda (your file: src/lambdas.ts)
     const nestApiFunction = new NodejsFunction(this, 'NestApi', {
       runtime: Runtime.NODEJS_18_X,
       handler: 'handler',
@@ -69,12 +68,9 @@ class ApiStack extends Stack {
 
     const integration = new LambdaIntegration(nestApiFunction);
 
-    // Same routes as you had before
     api.root.addMethod('GET', integration);
     api.root.addResource('restaurants').addMethod('GET', integration);
 
-    // (Optional) if later you add more endpoints in Nest:
-    // api.root.addProxy({ defaultIntegration: integration, anyMethod: true })
   }
 }
 
